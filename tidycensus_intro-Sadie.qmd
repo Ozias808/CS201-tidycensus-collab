@@ -10,9 +10,9 @@ toc: true
 ## Install and Load Packages
 
 ```{r Libraries}
-install.packages("tidycensus")
-install.packages("reactable")
-install.packages("ggpubr")
+# install.packages("tidycensus")
+# install.packages("reactable")
+# install.packages("ggpubr")
 
 library(tidycensus)  # star of the show, what we will use to import data
 library(tidyverse) # you know her
@@ -41,7 +41,7 @@ API stands for Application Programming Interface. Here is the idea:
 [Request your own](https://api.census.gov/data/key_signup.html) or use Amber's (below).
 
 ```{r Define API Key, message=FALSE}
-census_api_key("bde185029094faa4c8d6786a05b1d3") #shiftC for making and unmaking a comment
+# census_api_key("") #shiftC for making and unmaking a comment
 ```
 
 ## Import Variables
