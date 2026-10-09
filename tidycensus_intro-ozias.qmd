@@ -297,3 +297,5 @@ Exploring the relationship between (insert variable here) and (insert variable h
 ```
 
 ### Describe what you found
+
+In the mapping, I have found out that the correlation is really not that strong. This means that even though the line that shows the average says that unemployment rates go down when getting a higher degree, you can't count on the graph as truth since there are so much dots outside the line.
