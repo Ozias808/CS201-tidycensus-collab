@@ -244,6 +244,7 @@ Investigating (insert variable here) on Oahu at the census tract level.
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
+#comparing unemployment and education
 oahu_unemployment_education <- get_acs(
   geography = "tract",
   variables = c(
@@ -288,6 +289,17 @@ Exploring the relationship between (insert variable here) and (insert variable h
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
+#scatterplot for oahu_unemployment_education
+ggplot(oahu_unemployment_education, aes(x = percent_BAE, y = percent_unemployment)) +
+  geom_point() +
+  geom_smooth() + # adds a regression line (LOESS)
+  stat_cor() + # prints R and p
+  theme_minimal() + 
+  labs(title = "Comparing Rates of Higher Education to Unemployment, Honolulu County",
+       subtitle = "ACS 5-year, 2024 release",
+       x = "People with a Bachelor's Degree or Higher (%)",
+       y = "Unemployment Rate (%)",
+       caption = "Shaded area represents margin of error around the estimate")
 
 ```
 
