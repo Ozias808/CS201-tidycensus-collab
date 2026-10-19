@@ -42,7 +42,7 @@ API stands for Application Programming Interface. Here is the idea:
 
 ```{r Define API Key, message=FALSE}
 
-census_api_key("bde185029094faa4c8d6786a05b1d3") #shiftC for making and unmaking a comment
+census_api_key("bde185029094faa4c8d6786a05b1d3")
 ```
 
 ## Import Variables
