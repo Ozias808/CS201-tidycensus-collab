@@ -244,13 +244,34 @@ Investigating (insert variable here) on Oahu at the census tract level.
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
-
+oahu_unemployment_education <- get_acs(
+  geography = "tract",
+  variables = c(
+    percent_unemployment = "DP03_0009PE",
+    percent_BA = "DP02_0068P"
+  ),
+  state = "HI",
+  county = "Honolulu",
+  geometry = TRUE,
+  output = "wide",
+  year = 2024) %>%
+  dplyr::filter(GEOID != "15003981200", GEOID != "15003981900")
 ```
 
 ### Mapping
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
+ggplot(oahu_unemployment_education,
+  aes(x = percent_BAE,
+    y = percent_unemployment)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  ggpubr::stat_cor() +
+  theme_minimal() +
+  labs(title = "Education and Unemployment in Honolulu County",
+       x = "People with a Bachelor's Degree or Higher (%)",
+       y = "Unemployment Rate (%)")
 
 ```
 
@@ -271,3 +292,5 @@ Exploring the relationship between (insert variable here) and (insert variable h
 ```
 
 ### Describe what you found
+
+In the mapping, I have found out that the correlation is really not that strong. This means that even though the line that shows the average says that unemployment rates go down when getting a higher degree, you can't count on the graph as truth since there are so much dots outside the line.
