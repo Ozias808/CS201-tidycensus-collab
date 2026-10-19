@@ -299,7 +299,7 @@ ggplot(oahu_unemployment_education, aes(x = percent_BAE, y = percent_unemploymen
        subtitle = "ACS 5-year, 2024 release",
        x = "People with a Bachelor's Degree or Higher (%)",
        y = "Unemployment Rate (%)",
-       caption = "Shaded area represents margin of error around the estimate")
+       caption = "Shaded area represents margin of error around the estimate") 
 
 ```
 
