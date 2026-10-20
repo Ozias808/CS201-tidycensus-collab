@@ -207,7 +207,7 @@ ggplot(oahu_family_poverty_college_education, aes(x = percent_povertyE,y = perce
        subtitle = "ACS 5-year, 2024 release",
        x = "Percent of Families Living Below the Poverty Line",
        y = "Percent with a BA or higher",
-       caption = "Shaded area represents margin of error around the estimate")
+       caption = "Shaded area represents margin of error around the estimate") 
   
 ```
 
