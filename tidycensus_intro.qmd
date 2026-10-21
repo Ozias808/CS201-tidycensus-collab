@@ -30,7 +30,7 @@ You can always visit the [Census website](https://data.census.gov) and grab data
 
 API stands for Application Programming Interface. Here is the idea:
 
-- You [request a unique API key](https://api.census.gov/data/key_signup.html) from the Bureau (or any other org that offers this)
+- You [request a unique API key](https://api.census.gov/data/key_signup.html) from the Bureau (or any other org that offers this) delet this
 
 - Place your unique API key in the code below
 
