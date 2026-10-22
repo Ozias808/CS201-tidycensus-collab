@@ -30,7 +30,7 @@ You can always visit the [Census website](https://data.census.gov) and grab data
 
 API stands for Application Programming Interface. Here is the idea:
 
-- You [request a unique API key](https://api.census.gov/data/key_signup.html) from the Bureau (or any other org that offers this) delet this
+- You [request a unique API key](https://api.census.gov/data/key_signup.html) from the Bureau (or any other org that offers this)
 
 - Place your unique API key in the code below
 
@@ -42,7 +42,7 @@ API stands for Application Programming Interface. Here is the idea:
 
 ```{r Define API Key, message=FALSE}
 
-census_api_key("")
+census_api_key("bde185029094faa4c8d6786a05b1d3", install = TRUE)
 
 ```
 
@@ -282,17 +282,29 @@ ggplot(oahu_unemployment_education,
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
-ggplot(oahu_poverty_2014_2024, aes(x = year, y = estimate, group = 1)) + 
-  geom_line() + 
+oahu_unemployment_2014_2024 <- get_acs(
+  geography = "tract",
+  variables = "DP03_0009PE",  # Unemployment rate
+  state = "HI",
+  county = "Honolulu",
+  geometry = TRUE,
+  output = "wide",
+  year = c(2014, 2019, 2024)) %>%  # Multiple years
+  dplyr::filter(GEOID != "15003981200", GEOID != "15003981900")
+
+# Time series plot for unemployment
+ggplot(oahu_unemployment_2014_2024,
+       aes(x = as.factor(year), y = estimate, group = 1)) +
+  geom_line() +
   geom_point() +
-  labs(title = "Honolulu County Poverty Rate (ACS Rolling 5-year estimates)",
-       x = "People with a Bachelor's Degree or Higher (%)",
+  labs(title = "Honolulu County Unemployment Rate Over Time (ACS Rolling 5-year estimates)",
+       x = "Year",
        y = "Unemployment Rate (%)")
 ```
 
 ### Scatter Plot
 
-Exploring the relationship between (insert variable here) and (insert variable here) with a scatter plot
+Exploring the relationship between rates of higher education ("People with a Bachelor's Degree or Higher (%)" and unemployment rate (%) with a scatter plot:
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
@@ -307,6 +319,7 @@ ggplot(oahu_unemployment_education, aes(x = percent_BAE, y = percent_unemploymen
        x = "People with a Bachelor's Degree or Higher (%)",
        y = "Unemployment Rate (%)",
        caption = "Shaded area represents margin of error around the estimate")  
+
 
 ```
 
